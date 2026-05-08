@@ -32,17 +32,20 @@ function scrollToCountry(slug: string) {
 }
 
 export function InteractiveWorldMap({ travels }: InteractiveWorldMapProps) {
-  const [activeSlug, setActiveSlug] = useState(travels[0]?.slug);
+  const [activeSlug, setActiveSlug] = useState<string | null>(null);
 
   const activeTravel = useMemo(
-    () => travels.find((travel) => travel.slug === activeSlug) ?? travels[0],
+    () => travels.find((travel) => travel.slug === activeSlug),
     [activeSlug, travels]
   );
 
   const activePoint = activeTravel ? project(activeTravel) : undefined;
 
   return (
-    <div className="relative h-full min-h-[340px] overflow-hidden border border-white/15 bg-[#0d1618]/80 shadow-2xl shadow-black/30 backdrop-blur-md">
+    <div
+      className="relative h-full min-h-[340px] overflow-hidden border border-white/15 bg-[#0d1618]/80 shadow-2xl shadow-black/30 backdrop-blur-md"
+      onClick={() => setActiveSlug(null)}
+    >
       <div className="map-grid absolute inset-0 opacity-40" />
       <svg
         aria-label="去过的国家和地区地图"
@@ -53,8 +56,8 @@ export function InteractiveWorldMap({ travels }: InteractiveWorldMapProps) {
       >
         <defs>
           <linearGradient id="landGradient" x1="0%" x2="100%" y1="0%" y2="100%">
-            <stop offset="0%" stopColor="#f1dfc8" stopOpacity="0.2" />
-            <stop offset="100%" stopColor="#6a8d88" stopOpacity="0.32" />
+            <stop offset="0%" stopColor="#f1dfc8" stopOpacity="0.34" />
+            <stop offset="100%" stopColor="#6a8d88" stopOpacity="0.46" />
           </linearGradient>
           <filter id="softGlow">
             <feGaussianBlur result="coloredBlur" stdDeviation="5" />
@@ -74,13 +77,37 @@ export function InteractiveWorldMap({ travels }: InteractiveWorldMapProps) {
           ))}
         </g>
 
-        <g fill="url(#landGradient)" stroke="rgba(246,240,231,0.18)" strokeWidth="1">
-          <path d="M132 138c34-37 91-52 143-39 50 13 85 48 102 89 18 44 5 91-31 120-31 25-74 32-118 19-42-13-68-40-104-66-35-25-55-70-36-104 8-14 25-17 44-19Z" />
-          <path d="M264 319c38 6 68 29 76 64 8 34-7 76-37 91-31 16-69-2-88-32-22-35-24-76-8-101 11-18 32-25 57-22Z" />
-          <path d="M432 112c48-24 116-22 174 1 57 23 92 72 91 126-1 44-31 72-79 81-49 8-86-9-124-35-42-29-96-39-113-83-14-37 11-69 51-90Z" />
-          <path d="M495 278c31 7 51 30 53 57 2 28-14 58-41 70-28 12-57-1-75-25-19-27-19-63-2-84 14-18 37-23 65-18Z" />
-          <path d="M632 177c41-43 115-60 180-45 67 15 112 57 121 109 9 53-18 98-70 118-53 20-110 5-152-28-35-27-79-38-96-78-12-28-5-53 17-76Z" />
-          <path d="M739 337c46-18 96-6 126 27 29 32 36 78 13 111-22 32-70 42-114 24-42-16-79-51-83-90-3-32 21-58 58-72Z" />
+        <g
+          fill="url(#landGradient)"
+          stroke="rgba(246,240,231,0.48)"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="1.6"
+        >
+          <path d="M42 142 L70 121 L105 112 L91 135 L63 151 L48 168 L31 160 Z" />
+          <path d="M68 147 L96 121 L132 108 L169 92 L207 90 L236 101 L264 105 L293 124 L321 151 L351 160 L370 184 L352 216 L319 230 L284 222 L260 238 L232 241 L208 257 L176 254 L152 232 L130 220 L110 198 L82 187 L62 166 Z" />
+          <path d="M303 239 L333 250 L358 263 L386 270 L401 283 L379 293 L345 280 L318 264 Z" />
+          <path d="M378 62 L425 51 L469 67 L482 99 L447 123 L399 119 L370 92 Z" />
+          <path d="M323 286 L356 291 L387 315 L401 354 L389 392 L366 430 L354 475 L328 498 L304 471 L293 427 L276 395 L283 352 L300 323 Z" />
+          <path d="M449 134 L459 124 L466 143 L452 153 Z" />
+          <path d="M464 116 L479 105 L492 124 L480 145 L462 137 Z" />
+          <path d="M532 90 L566 58 L596 68 L589 105 L566 126 L543 111 Z" />
+          <path d="M491 126 L515 111 L544 109 L568 124 L563 145 L538 151 L525 166 L501 160 L482 142 Z" />
+          <path d="M520 171 L560 162 L602 178 L632 214 L642 260 L622 311 L597 357 L562 384 L536 355 L519 307 L496 272 L502 220 Z" />
+          <path d="M566 166 L584 125 L631 98 L684 101 L727 87 L776 105 L835 113 L895 145 L930 184 L906 222 L861 222 L832 250 L789 241 L755 268 L717 247 L683 245 L658 217 L621 210 L606 181 Z" />
+          <path d="M725 255 L755 275 L785 290 L806 322 L779 335 L747 310 L721 286 Z" />
+          <path d="M762 363 L812 345 L874 357 L912 388 L896 425 L842 437 L791 420 L748 394 Z" />
+          <path d="M918 438 L944 454 L934 471 L909 456 Z" />
+          <path d="M68 488 L165 468 L267 478 L383 468 L497 486 L624 470 L752 482 L895 467 L963 489 L918 507 L741 501 L583 510 L417 500 L249 510 L111 503 Z" />
+        </g>
+
+        <g className="select-none text-[11px]" fill="rgba(246,240,231,0.36)">
+          <text x="172" y="172">北美洲</text>
+          <text x="322" y="376">南美洲</text>
+          <text x="505" y="137">欧洲</text>
+          <text x="552" y="274">非洲</text>
+          <text x="726" y="165">亚洲</text>
+          <text x="800" y="397">澳洲</text>
         </g>
 
         {travels.map((travel) => {
@@ -93,11 +120,16 @@ export function InteractiveWorldMap({ travels }: InteractiveWorldMapProps) {
               className="cursor-pointer outline-none"
               filter={isActive ? "url(#softGlow)" : undefined}
               key={travel.slug}
-              onClick={() => scrollToCountry(travel.slug)}
+              onClick={(event) => {
+                event.stopPropagation();
+                setActiveSlug(travel.slug);
+                scrollToCountry(travel.slug);
+              }}
               onFocus={() => setActiveSlug(travel.slug)}
               onKeyDown={(event) => {
                 if (event.key === "Enter" || event.key === " ") {
                   event.preventDefault();
+                  setActiveSlug(travel.slug);
                   scrollToCountry(travel.slug);
                 }
               }}
