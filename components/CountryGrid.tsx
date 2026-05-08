@@ -11,10 +11,9 @@ export function CountryGrid({ travels }: CountryGridProps) {
     <section className="bg-[#080807] px-5 py-20 text-[#f6f0e7] sm:px-8" id="stories">
       <div className="mx-auto max-w-6xl">
         <AnimatedSection className="mb-12 grid gap-6 md:grid-cols-[0.7fr_1.3fr]">
-          <p className="text-sm uppercase text-[#a99d8f]">Story Index</p>
+          <p className="text-sm uppercase text-[#a99d8f]">旅行索引</p>
           <h2 className="max-w-3xl text-3xl font-normal text-balance text-[#fff8ef] md:text-5xl">
-            Fourteen places held as photographs, routes, and short personal field
-            notes.
+            先把去过的地方收进一张地图里，具体城市、照片和简介下一步慢慢补齐。
           </h2>
         </AnimatedSection>
 

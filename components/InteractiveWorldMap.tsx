@@ -13,10 +13,13 @@ type ProjectedPoint = {
   y: number;
 };
 
-function project({ lat, lng }: TravelEntry["coordinates"]): ProjectedPoint {
+function project(travel: TravelEntry): ProjectedPoint {
+  const { lat, lng } = travel.coordinates;
+  const offset = travel.mapOffset ?? { x: 0, y: 0 };
+
   return {
-    x: ((lng + 180) / 360) * 1000,
-    y: ((90 - lat) / 180) * 520
+    x: ((lng + 180) / 360) * 1000 + offset.x,
+    y: ((90 - lat) / 180) * 520 + offset.y
   };
 }
 
@@ -36,14 +39,15 @@ export function InteractiveWorldMap({ travels }: InteractiveWorldMapProps) {
     [activeSlug, travels]
   );
 
-  const activePoint = activeTravel ? project(activeTravel.coordinates) : undefined;
+  const activePoint = activeTravel ? project(activeTravel) : undefined;
 
   return (
-    <div className="relative h-full min-h-[310px] overflow-hidden border border-white/15 bg-[#0d1618]/70 shadow-2xl shadow-black/30 backdrop-blur-md">
+    <div className="relative h-full min-h-[340px] overflow-hidden border border-white/15 bg-[#0d1618]/80 shadow-2xl shadow-black/30 backdrop-blur-md">
       <div className="map-grid absolute inset-0 opacity-40" />
       <svg
-        aria-label="Visited places world map"
-        className="relative h-full min-h-[310px] w-full"
+        aria-label="去过的国家和地区地图"
+        className="relative h-full min-h-[340px] w-full"
+        preserveAspectRatio="xMidYMid meet"
         role="group"
         viewBox="0 0 1000 520"
       >
@@ -71,21 +75,21 @@ export function InteractiveWorldMap({ travels }: InteractiveWorldMapProps) {
         </g>
 
         <g fill="url(#landGradient)" stroke="rgba(246,240,231,0.18)" strokeWidth="1">
-          <path d="M143 143c31-42 86-57 129-43 43 15 74 48 93 90 18 40 8 84-18 115-25 31-62 43-102 33-46-11-76-39-111-65-36-28-53-75-31-113 8-14 23-15 40-17Z" />
-          <path d="M270 324c35 4 65 27 72 60 7 31-6 76-34 89-29 14-65-3-83-31-21-33-23-74-8-99 10-17 29-22 53-19Z" />
-          <path d="M452 118c43-23 104-23 155-1 52 22 81 70 80 121-1 42-28 68-72 75-46 7-78-10-111-34-37-26-87-35-104-78-14-36 13-63 52-83Z" />
-          <path d="M500 283c28 7 44 27 46 51 2 24-12 54-36 64-26 11-52 0-68-22-17-25-18-58-3-78 13-17 35-20 61-15Z" />
-          <path d="M639 182c36-42 105-60 165-46 62 14 104 53 113 102 9 50-16 92-64 111-48 18-101 5-139-25-32-25-73-35-89-73-11-26-6-49 14-69Z" />
-          <path d="M742 340c43-16 89-5 116 25 27 30 34 72 13 103-20 30-64 39-105 23-38-15-72-47-76-83-3-30 18-55 52-68Z" />
+          <path d="M132 138c34-37 91-52 143-39 50 13 85 48 102 89 18 44 5 91-31 120-31 25-74 32-118 19-42-13-68-40-104-66-35-25-55-70-36-104 8-14 25-17 44-19Z" />
+          <path d="M264 319c38 6 68 29 76 64 8 34-7 76-37 91-31 16-69-2-88-32-22-35-24-76-8-101 11-18 32-25 57-22Z" />
+          <path d="M432 112c48-24 116-22 174 1 57 23 92 72 91 126-1 44-31 72-79 81-49 8-86-9-124-35-42-29-96-39-113-83-14-37 11-69 51-90Z" />
+          <path d="M495 278c31 7 51 30 53 57 2 28-14 58-41 70-28 12-57-1-75-25-19-27-19-63-2-84 14-18 37-23 65-18Z" />
+          <path d="M632 177c41-43 115-60 180-45 67 15 112 57 121 109 9 53-18 98-70 118-53 20-110 5-152-28-35-27-79-38-96-78-12-28-5-53 17-76Z" />
+          <path d="M739 337c46-18 96-6 126 27 29 32 36 78 13 111-22 32-70 42-114 24-42-16-79-51-83-90-3-32 21-58 58-72Z" />
         </g>
 
         {travels.map((travel) => {
-          const point = project(travel.coordinates);
+          const point = project(travel);
           const isActive = travel.slug === activeSlug;
 
           return (
             <motion.g
-              aria-label={`${travel.name}, ${travel.visitedYear}`}
+              aria-label={`${travel.name} ${travel.englishName}，${travel.visitSummary}`}
               className="cursor-pointer outline-none"
               filter={isActive ? "url(#softGlow)" : undefined}
               key={travel.slug}
@@ -102,6 +106,9 @@ export function InteractiveWorldMap({ travels }: InteractiveWorldMapProps) {
               tabIndex={0}
             >
               <motion.circle
+                initial={false}
+                opacity={isActive ? 0.25 : 0.14}
+                r={isActive ? 19 : 13}
                 animate={{ opacity: isActive ? 0.24 : 0.12, r: isActive ? 19 : 13 }}
                 cx={point.x}
                 cy={point.y}
@@ -109,6 +116,8 @@ export function InteractiveWorldMap({ travels }: InteractiveWorldMapProps) {
                 transition={{ duration: 0.25 }}
               />
               <motion.circle
+                initial={false}
+                r={isActive ? 5.5 : 4}
                 animate={{ r: isActive ? 5.5 : 4 }}
                 cx={point.x}
                 cy={point.y}
@@ -139,8 +148,9 @@ export function InteractiveWorldMap({ travels }: InteractiveWorldMapProps) {
           </div>
           <div className="flex items-start justify-between gap-3">
             <div>
-              <p className="text-sm uppercase text-[#b8aa9a]">{activeTravel.visitedYear}</p>
+              <p className="text-sm uppercase text-[#b8aa9a]">{activeTravel.visitSummary}</p>
               <h3 className="text-xl text-[#fff8ef]">{activeTravel.name}</h3>
+              <p className="text-xs uppercase text-[#8f8377]">{activeTravel.englishName}</p>
             </div>
             <span
               aria-hidden="true"

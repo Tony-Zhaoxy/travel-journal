@@ -29,25 +29,24 @@ export function Hero({ travels }: HeroProps) {
         <motion.div
           animate={{ opacity: 1, y: 0 }}
           className="max-w-4xl space-y-7"
-          initial={{ opacity: 0, y: 24 }}
+          initial={false}
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
         >
           <p className="text-sm uppercase text-[#e7d8c7]">
-            Personal photography atlas / 14 places
+            私人旅行影像地图 / {travels.length} 个国家与地区
           </p>
           <h1 className="text-5xl font-normal text-balance text-white md:text-7xl">
-            Travel Field Notes
+            旅行札记
           </h1>
           <p className="max-w-2xl text-lg leading-8 text-[#e8dccd] md:text-xl">
-            A cinematic journal of countries, routes, photographs, and the small
-            life details that stay bright long after returning home.
+            用照片、地图和短句整理走过的地方。先把国家与地区放好，之后再慢慢补上城市、路线、简介和真正属于你的旅行照片。
           </p>
         </motion.div>
 
         <motion.div
           animate={{ opacity: 1, y: 0 }}
-          className="min-h-[310px]"
-          initial={{ opacity: 0, y: 30 }}
+          className="h-[clamp(340px,44vw,520px)]"
+          initial={false}
           transition={{ delay: 0.15, duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
         >
           <InteractiveWorldMap travels={travels} />

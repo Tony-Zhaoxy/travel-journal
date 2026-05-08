@@ -3,18 +3,16 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: {
-    default: "Travel Field Notes",
-    template: "%s | Travel Field Notes"
+    default: "旅行札记",
+    template: "%s | 旅行札记"
   },
-  description:
-    "A personal travel photography atlas and life journal built as a code-first Next.js project.",
+  description: "一个中文的私人旅行摄影地图与生活记录网站。",
   icons: {
     icon: "/favicon.svg"
   },
   openGraph: {
-    title: "Travel Field Notes",
-    description:
-      "A minimalist, cinematic travel photography journal with an interactive world map.",
+    title: "旅行札记",
+    description: "用地图、照片和短句整理走过的国家与地区。",
     type: "website"
   }
 };
@@ -25,7 +23,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="zh-CN">
       <body>{children}</body>
     </html>
   );
