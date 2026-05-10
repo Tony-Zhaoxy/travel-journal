@@ -13,7 +13,7 @@ export function CountryGrid({ travels }: CountryGridProps) {
         <AnimatedSection className="mb-12 grid gap-6 md:grid-cols-[0.7fr_1.3fr]">
           <p className="text-sm uppercase text-[#948879]">旅行记录</p>
           <h2 className="max-w-3xl text-3xl font-normal text-balance md:text-5xl">
-            每一个地图标点都会对应下面的一段旅行记录，先留好城市、路线、次数和照片位置。
+            地图标点会跳到对应记录，先留好城市、路线、年份和照片位置。
           </h2>
         </AnimatedSection>
 

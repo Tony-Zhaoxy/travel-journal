@@ -46,13 +46,17 @@ Open `http://localhost:3000`.
 Edit [data/travels.ts](./data/travels.ts). Each entry controls:
 
 - map marker position through `mapPosition`
+- optional marker routing through `mapTargetSlug`
+- optional homepage visibility through `showInStoryList`
 - marker tooltip
 - homepage travel card
 - country / region detail page
 - sitemap entry
 
+The homepage card list groups the United Kingdom into one story card while the world map still keeps separate markers for England, Wales, Scotland, and Northern Ireland. Those four markers use `mapTargetSlug: "united-kingdom"` and `showInStoryList: false`.
+
 The current list follows Tony's latest visited countries, regions, and U.S. states:
-Singapore, England, Wales, Scotland, Northern Ireland, Gibraltar, Netherlands, Germany, France, Finland, Spain, Iceland, Belgium, Egypt, Japan, Denmark, Sweden, Norway, Czech Republic, California, Nevada, Arizona, Utah, and Hawaii.
+Singapore, United Kingdom, Gibraltar, Netherlands, Germany, France, Finland, Spain, Iceland, Belgium, Egypt, Japan, Denmark, Sweden, Norway, Czech Republic, California, Nevada, Arizona, Utah, and Hawaii.
 
 ## Adding Photos
 

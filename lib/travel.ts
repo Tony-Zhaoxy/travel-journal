@@ -4,15 +4,24 @@ export function getAllTravels() {
   return travels;
 }
 
+export function getMapTravels() {
+  return travels.filter((travel) => travel.showOnWorldMap !== false);
+}
+
+export function getStoryTravels() {
+  return travels.filter((travel) => travel.showInStoryList !== false);
+}
+
 export function getTravelBySlug(slug: string) {
-  return travels.find((travel) => travel.slug === slug);
+  return getStoryTravels().find((travel) => travel.slug === slug);
 }
 
 export function getAdjacentTravels(slug: string) {
-  const index = travels.findIndex((travel) => travel.slug === slug);
+  const storyTravels = getStoryTravels();
+  const index = storyTravels.findIndex((travel) => travel.slug === slug);
 
   return {
-    previous: index > 0 ? travels[index - 1] : travels[travels.length - 1],
-    next: index >= 0 && index < travels.length - 1 ? travels[index + 1] : travels[0]
+    previous: index > 0 ? storyTravels[index - 1] : storyTravels[storyTravels.length - 1],
+    next: index >= 0 && index < storyTravels.length - 1 ? storyTravels[index + 1] : storyTravels[0]
   };
 }

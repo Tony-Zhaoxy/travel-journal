@@ -65,35 +65,35 @@ export function InteractiveWorldMap({ travels }: InteractiveWorldMapProps) {
 
             return (
               <button
-                aria-label={`${travel.name}，${travel.city}，${travel.visitSummary}，${travel.year}`}
-                className="group absolute flex h-6 w-6 -translate-x-1/2 -translate-y-1/2 items-center justify-center outline-none md:h-7 md:w-7"
+                aria-label={`${travel.name}，${travel.city}，${travel.year}`}
+                className="group absolute flex h-6 w-6 -translate-x-1/2 -translate-y-1/2 items-center justify-center outline-none"
                 key={travel.slug}
                 onClick={(event) => {
                   event.stopPropagation();
                   setActiveSlug(travel.slug);
-                  scrollToCountry(travel.slug);
+                  scrollToCountry(travel.mapTargetSlug ?? travel.slug);
                 }}
                 onBlur={() => setActiveSlug(null)}
                 onFocus={() => setActiveSlug(travel.slug)}
                 onMouseEnter={() => setActiveSlug(travel.slug)}
                 onMouseLeave={() => setActiveSlug(null)}
                 style={{
-                  left: `${Math.min(Math.max(point.x, 4), 96)}%`,
+                  left: `${Math.min(Math.max(point.x, 2), 98)}%`,
                   top: `${Math.min(Math.max(point.y, 6), 94)}%`,
                   zIndex: isActive ? 35 : 20
                 }}
-                title={`${travel.name} · ${travel.visitSummary}`}
+                title={`${travel.name} · ${travel.year}`}
                 type="button"
               >
                 <motion.span
-                  animate={{ opacity: isActive ? 0.28 : 0.16, scale: isActive ? 1.32 : 1 }}
-                  className="absolute h-5 w-5 rounded-full md:h-6 md:w-6"
+                  animate={{ opacity: isActive ? 0.24 : 0.11, scale: isActive ? 1.3 : 1 }}
+                  className="absolute h-4 w-4 rounded-full md:h-5 md:w-5"
                   style={{ backgroundColor: travel.accent }}
                   transition={{ duration: 0.2 }}
                 />
                 <motion.span
                   animate={{ scale: isActive ? 1.18 : 1 }}
-                  className="relative h-2.5 w-2.5 rounded-full border border-white shadow-[0_4px_14px_rgba(0,0,0,0.28)] transition group-hover:shadow-[0_6px_18px_rgba(0,0,0,0.34)] md:h-3 md:w-3"
+                  className="relative h-2 w-2 rounded-full border border-white shadow-[0_3px_10px_rgba(0,0,0,0.24)] transition group-hover:shadow-[0_5px_14px_rgba(0,0,0,0.3)] md:h-2.5 md:w-2.5"
                   style={{ backgroundColor: travel.accent }}
                   transition={{ duration: 0.2 }}
                 />
@@ -114,7 +114,7 @@ export function InteractiveWorldMap({ travels }: InteractiveWorldMapProps) {
               transition={{ duration: 0.18 }}
             >
               <p className="text-xs uppercase text-[#948879]">
-                {activeTravel.visitSummary} / {activeTravel.year}
+                {activeTravel.year}
               </p>
               <h3 className="mt-1 text-xl font-normal">{activeTravel.name}</h3>
               <p className="mt-1 text-sm text-[#948879]">{activeTravel.englishName}</p>

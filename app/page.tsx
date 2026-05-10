@@ -1,15 +1,18 @@
 import { CountryGrid } from "@/components/CountryGrid";
 import { Hero } from "@/components/Hero";
 import { SiteHeader } from "@/components/SiteHeader";
-import { travels } from "@/data/travels";
+import { getMapTravels, getStoryTravels } from "@/lib/travel";
 
 export default function Home() {
+  const mapTravels = getMapTravels();
+  const storyTravels = getStoryTravels();
+
   return (
     <>
       <SiteHeader />
       <main>
-        <Hero travels={travels} />
-        <CountryGrid travels={travels} />
+        <Hero travels={mapTravels} />
+        <CountryGrid travels={storyTravels} />
         <section className="border-t border-[#e6ded4] bg-[#f5efe6] px-5 py-20 sm:px-8">
           <div className="mx-auto grid max-w-6xl gap-10 md:grid-cols-[0.8fr_1.2fr]">
             <p className="text-sm uppercase text-[#948879]">后续编辑</p>

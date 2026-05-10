@@ -13,6 +13,19 @@ export type MapPosition = {
   y: number;
 };
 
+export type TravelDetailSection = {
+  slug: string;
+  name: string;
+  englishName: string;
+  city: string;
+  year: string;
+  mapPosition: MapPosition;
+  accent: string;
+  description: string;
+  places: string[];
+  gallery: string[];
+};
+
 export type TravelEntry = {
   slug: string;
   name: string;
@@ -21,8 +34,10 @@ export type TravelEntry = {
   city: string;
   year: string;
   visitSummary: string;
-  visitCount?: number;
   airportOnly?: boolean;
+  showInStoryList?: boolean;
+  showOnWorldMap?: boolean;
+  mapTargetSlug?: string;
   coordinates: TravelCoordinates;
   mapPosition?: MapPosition;
   mapOffset?: MapOffset;
@@ -34,4 +49,5 @@ export type TravelEntry = {
   highlights: string[];
   gallery: string[];
   story: string;
+  detailSections?: TravelDetailSection[];
 };

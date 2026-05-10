@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { AnimatedSection } from "@/components/AnimatedSection";
+import { RegionalDetailMap } from "@/components/RegionalDetailMap";
 import { SiteHeader } from "@/components/SiteHeader";
-import { getAdjacentTravels, getTravelBySlug } from "@/lib/travel";
-import { travels } from "@/data/travels";
+import { getAdjacentTravels, getStoryTravels, getTravelBySlug } from "@/lib/travel";
 
 type CountryPageProps = {
   params: Promise<{
@@ -13,7 +13,7 @@ type CountryPageProps = {
 };
 
 export function generateStaticParams() {
-  return travels.map((travel) => ({
+  return getStoryTravels().map((travel) => ({
     slug: travel.slug
   }));
 }
@@ -75,7 +75,7 @@ export default async function CountryPage({ params }: CountryPageProps) {
             </Link>
             <div className="max-w-4xl space-y-7">
               <p className="text-sm uppercase text-[#e7d8c7]">
-                {country.region} / {country.city} / {country.visitSummary} / {country.year}
+                {country.region} / {country.city} / {country.year}
               </p>
               <h1 className="text-5xl font-normal text-balance text-white md:text-7xl">
                 {country.name}
@@ -144,6 +144,75 @@ export default async function CountryPage({ params }: CountryPageProps) {
             </div>
           </article>
         </AnimatedSection>
+
+        {country.detailSections?.length ? (
+          <AnimatedSection className="border-y border-white/10 bg-[#0d0c0a] px-5 py-20 sm:px-8">
+            <div className="mx-auto grid max-w-6xl gap-10 lg:grid-cols-[0.72fr_1.28fr]">
+              <div className="space-y-5">
+                <p className="text-sm uppercase text-[#a99d8f]">英国地图</p>
+                <h2 className="text-4xl font-normal text-balance text-[#fff8ef] md:text-5xl">
+                  从英国总记录继续进入四个地区。
+                </h2>
+                <p className="max-w-md text-base leading-8 text-[#c9beb1]">
+                  这里会作为英国内部路线的二级入口。点击地图上的英格兰、威尔士、苏格兰或北爱尔兰，会跳到下方对应介绍。
+                </p>
+              </div>
+              <RegionalDetailMap sections={country.detailSections} />
+            </div>
+          </AnimatedSection>
+        ) : null}
+
+        {country.detailSections?.length ? (
+          <AnimatedSection className="mx-auto max-w-6xl px-5 py-20 sm:px-8">
+            <div className="mb-10 grid gap-6 md:grid-cols-[0.72fr_1.28fr]">
+              <p className="text-sm uppercase text-[#a99d8f]">地区记录</p>
+              <h2 className="text-4xl font-normal text-balance text-[#fff8ef] md:text-5xl">
+                先把四个英国地区的位置留好，之后再补城市、路线和照片。
+              </h2>
+            </div>
+            <div className="grid gap-5 md:grid-cols-2">
+              {country.detailSections.map((section) => (
+                <article
+                  className="scroll-mt-28 rounded-lg border border-white/10 bg-white/[0.035] p-5 md:p-7"
+                  id={`${country.slug}-${section.slug}`}
+                  key={section.slug}
+                >
+                  <div className="mb-6 flex items-center justify-between gap-4 text-sm uppercase text-[#a99d8f]">
+                    <span>{section.englishName}</span>
+                    <span>{section.year}</span>
+                  </div>
+                  <h3 className="text-3xl font-normal text-[#fff8ef]">{section.name}</h3>
+                  <p className="mt-1 text-sm text-[#c9beb1]">{section.city}</p>
+                  <p className="mt-5 text-base leading-8 text-[#efe5d8]">
+                    {section.description}
+                  </p>
+                  <div className="mt-6 space-y-2">
+                    {section.places.map((place) => (
+                      <p className="border-l border-white/15 pl-3 text-sm text-[#c9beb1]" key={place}>
+                        {place}
+                      </p>
+                    ))}
+                  </div>
+                  <div className="mt-6 grid grid-cols-3 gap-2">
+                    {section.gallery.map((caption) => (
+                      <div
+                        className="aspect-square rounded-md border border-white/10 bg-white/[0.04] p-2"
+                        key={caption}
+                      >
+                        <div
+                          className="h-full w-full rounded-sm opacity-80"
+                          style={{
+                            background: `linear-gradient(135deg, ${section.accent}, #15130f 68%)`
+                          }}
+                        />
+                      </div>
+                    ))}
+                  </div>
+                </article>
+              ))}
+            </div>
+          </AnimatedSection>
+        ) : null}
 
         <nav className="border-t border-white/10 px-5 py-10 sm:px-8">
           <div className="mx-auto grid max-w-6xl gap-4 sm:grid-cols-2">
