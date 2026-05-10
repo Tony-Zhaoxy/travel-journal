@@ -92,7 +92,7 @@ export const travels: TravelEntry[] = [
     visitSummary: "2 次",
     visitCount: 2,
     coordinates: { lat: 36.1408, lng: -5.3536 },
-    mapPosition: { x: 45, y: 44 },
+    mapPosition: { x: 45.3, y: 44.2 },
     memory: "欧洲南端的海峡与岩山先留为占位，之后补上街道、海风和边境记忆。",
     coverImage: `https://images.unsplash.com/photo-1507525428034-b723cf961d3e${imageParams}`,
     accent: "#c89145",
