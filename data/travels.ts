@@ -456,7 +456,7 @@ export const travels: TravelEntry[] = [
     highlights: ["2026", "海岛", "美国州"],
     gallery: ["海岸占位", "岛屿占位", "日落占位"],
     story: "这里会记录夏威夷 2026 的旅行，后续补上岛屿、路线和照片。"
-  }
+  },
   {
     slug: "singapore",
     name: "新加坡",
@@ -477,5 +477,5 @@ export const travels: TravelEntry[] = [
     highlights: ["机场中转", "2021", "待补照片"],
     gallery: ["机场照片占位", "登机口占位", "夜景占位"],
     story: "这里先作为新加坡机场中转的占位章节，之后可以替换为真实照片和更细的记忆。"
-  },
+  }
 ];
