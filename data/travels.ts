@@ -3,27 +3,7 @@ import type { TravelEntry } from "@/types/travel";
 const imageParams = "?auto=format&fit=crop&w=1600&q=80";
 
 export const travels: TravelEntry[] = [
-  {
-    slug: "singapore",
-    name: "新加坡",
-    englishName: "Singapore",
-    region: "东南亚",
-    city: "樟宜机场",
-    year: "2021",
-    visitSummary: "机场中转",
-    visitCount: 1,
-    airportOnly: true,
-    coordinates: { lat: 1.3644, lng: 103.9915 },
-    mapPosition: { x: 79.2, y: 65.2 },
-    memory: "目前先记录为机场中转。之后可以补上航班、候机楼、转机时间和机场照片。",
-    coverImage: `https://images.unsplash.com/photo-1525625293386-3f8f99389edd${imageParams}`,
-    accent: "#b85f4f",
-    route: "樟宜机场中转",
-    places: ["Changi Airport", "城市与路线待补"],
-    highlights: ["机场中转", "2021", "待补照片"],
-    gallery: ["机场照片占位", "登机口占位", "夜景占位"],
-    story: "这里先作为新加坡机场中转的占位章节，之后可以替换为真实照片和更细的记忆。"
-  },
+  
   {
     slug: "england",
     name: "英格兰",
@@ -477,4 +457,25 @@ export const travels: TravelEntry[] = [
     gallery: ["海岸占位", "岛屿占位", "日落占位"],
     story: "这里会记录夏威夷 2026 的旅行，后续补上岛屿、路线和照片。"
   }
+  {
+    slug: "singapore",
+    name: "新加坡",
+    englishName: "Singapore",
+    region: "东南亚",
+    city: "樟宜机场",
+    year: "2021",
+    visitSummary: "机场中转",
+    visitCount: 1,
+    airportOnly: true,
+    coordinates: { lat: 1.3644, lng: 103.9915 },
+    mapPosition: { x: 79.2, y: 65.2 },
+    memory: "疫情下的樟宜机场",
+    coverImage: `https://images.unsplash.com/photo-1525625293386-3f8f99389edd${imageParams}`,
+    accent: "#b85f4f",
+    route: "樟宜机场中转",
+    places: ["Changi Airport", "城市与路线待补"],
+    highlights: ["机场中转", "2021", "待补照片"],
+    gallery: ["机场照片占位", "登机口占位", "夜景占位"],
+    story: "这里先作为新加坡机场中转的占位章节，之后可以替换为真实照片和更细的记忆。"
+  },
 ];
