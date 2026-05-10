@@ -447,7 +447,7 @@ export const travels: TravelEntry[] = [
     year: "2026",
     visitSummary: "美国州",
     coordinates: { lat: 19.8987, lng: -155.6659 },
-    mapPosition: { x: 12.6, y: 58.3 },
+    mapPosition: { x: 3.5, y: 53 },
     memory: "夏威夷记录为 2026，先留给海岛、海岸、热带植物和未来照片。",
     coverImage: `https://images.unsplash.com/photo-1507525428034-b723cf961d3e${imageParams}`,
     accent: "#579ca4",
