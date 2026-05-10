@@ -26,7 +26,7 @@ type DragState = {
   startPan: PanPosition;
 };
 
-const zoomLevels = [1, 1.25, 1.5] as const;
+const zoomLevels = [1, 1.5, 2, 2.5, 3] as const;
 
 function clamp(value: number, min: number, max: number) {
   return Math.min(Math.max(value, min), max);
@@ -141,10 +141,10 @@ export function InteractiveWorldMap({ travels }: InteractiveWorldMapProps) {
         className="relative overflow-hidden rounded-lg border border-[#e5ddd1] bg-[#fbf7ef] shadow-[0_24px_80px_rgba(31,27,21,0.12)]"
         onClick={() => setActiveSlug(null)}
       >
-        <div className="absolute right-3 top-3 z-50 flex items-center gap-1 rounded-full border border-[#e6ded4] bg-white/86 p-1 text-[#2d2923] shadow-[0_10px_28px_rgba(31,27,21,0.12)] backdrop-blur">
+        <div className="absolute right-2 top-2 z-50 flex items-center gap-0.5 rounded-full border border-[#e6ded4] bg-white/86 p-0.5 text-[#2d2923] shadow-[0_10px_28px_rgba(31,27,21,0.12)] backdrop-blur sm:right-3 sm:top-3 sm:gap-1 sm:p-1">
           <button
             aria-label="缩小地图"
-            className="grid h-8 w-8 place-items-center rounded-full text-lg leading-none transition hover:bg-[#f1e8db] disabled:cursor-not-allowed disabled:opacity-35"
+            className="grid h-6 w-6 place-items-center rounded-full text-sm leading-none transition hover:bg-[#f1e8db] disabled:cursor-not-allowed disabled:opacity-35 sm:h-8 sm:w-8 sm:text-lg"
             disabled={zoomIndex === 0}
             onClick={(event) => {
               event.stopPropagation();
@@ -154,12 +154,12 @@ export function InteractiveWorldMap({ travels }: InteractiveWorldMapProps) {
           >
             -
           </button>
-          <span className="min-w-10 text-center text-xs text-[#6f665d]">
+          <span className="min-w-8 text-center text-[10px] text-[#6f665d] sm:min-w-10 sm:text-xs">
             {zoom.toFixed(2).replace(/\.00$/, "")}x
           </span>
           <button
             aria-label="放大地图"
-            className="grid h-8 w-8 place-items-center rounded-full text-lg leading-none transition hover:bg-[#f1e8db] disabled:cursor-not-allowed disabled:opacity-35"
+            className="grid h-6 w-6 place-items-center rounded-full text-sm leading-none transition hover:bg-[#f1e8db] disabled:cursor-not-allowed disabled:opacity-35 sm:h-8 sm:w-8 sm:text-lg"
             disabled={zoomIndex === zoomLevels.length - 1}
             onClick={(event) => {
               event.stopPropagation();
@@ -272,7 +272,7 @@ export function InteractiveWorldMap({ travels }: InteractiveWorldMapProps) {
       </div>
 
       <p className="text-center text-xs leading-6 text-[#948879]">
-        可轻微放大地图，放大后拖动查看细节；点击地图上的点会跳到对应记录。
+        可将地图放大至 3x，放大后拖动查看细节；点击地图上的点会跳到对应记录。
       </p>
     </div>
   );
