@@ -468,7 +468,7 @@ export const travels: TravelEntry[] = [
     visitCount: 1,
     airportOnly: true,
     coordinates: { lat: 1.3644, lng: 103.9915 },
-    mapPosition: { x: 70, y: 62 },
+    mapPosition: { x: 73, y: 62.2 },
     memory: "疫情下的樟宜机场。",
     coverImage: `https://images.unsplash.com/photo-1525625293386-3f8f99389edd${imageParams}`,
     accent: "#b85f4f",
