@@ -151,10 +151,10 @@ export default async function CountryPage({ params }: CountryPageProps) {
               <div className="space-y-5">
                 <p className="text-sm uppercase text-[#a99d8f]">英国地图</p>
                 <h2 className="text-4xl font-normal text-balance text-[#fff8ef] md:text-5xl">
-                  从英国总记录继续进入四个地区。
+                  从英国地图继续进入具体城市。
                 </h2>
                 <p className="max-w-md text-base leading-8 text-[#c9beb1]">
-                  这里会作为英国内部路线的二级入口。点击地图上的英格兰、威尔士、苏格兰或北爱尔兰，会跳到下方对应介绍。
+                  从伦敦、曼彻斯特、布里斯托一路展开，把生活过、停留过和想继续补充的地方慢慢串起来。
                 </p>
               </div>
               <RegionalDetailMap sections={country.detailSections} />
@@ -165,9 +165,9 @@ export default async function CountryPage({ params }: CountryPageProps) {
         {country.detailSections?.length ? (
           <AnimatedSection className="mx-auto max-w-6xl px-5 py-20 sm:px-8">
             <div className="mb-10 grid gap-6 md:grid-cols-[0.72fr_1.28fr]">
-              <p className="text-sm uppercase text-[#a99d8f]">地区记录</p>
+              <p className="text-sm uppercase text-[#a99d8f]">城市记录</p>
               <h2 className="text-4xl font-normal text-balance text-[#fff8ef] md:text-5xl">
-                先把四个英国地区的位置留好，之后再补城市、路线和照片。
+                先放几个城市的交互样子，之后再慢慢补路线和照片。
               </h2>
             </div>
             <div className="grid gap-5 md:grid-cols-2">

@@ -27,68 +27,16 @@ export function RegionalDetailMap({ sections }: RegionalDetailMapProps) {
   return (
     <div className="space-y-4">
       <div
-        className="relative overflow-hidden rounded-lg border border-white/10 bg-[#f5efe6] shadow-[0_24px_80px_rgba(0,0,0,0.28)]"
+        className="relative mx-auto max-w-[560px] overflow-hidden rounded-lg border border-white/10 bg-[#f5efe6] shadow-[0_24px_80px_rgba(0,0,0,0.28)]"
         onClick={() => setActiveSlug(null)}
       >
-        <div className="relative aspect-[4/5] min-h-[420px]">
-          <svg
-            aria-label="英国地区地图"
-            className="absolute inset-0 h-full w-full"
-            role="img"
-            viewBox="0 0 420 520"
-          >
-            <rect fill="#f5efe6" height="520" width="420" />
-            <path
-              d="M174 76 C210 58 253 75 266 115 C279 156 245 181 254 214 C263 245 298 257 294 294 C290 335 247 339 237 373 C229 400 250 425 227 449 C200 477 159 458 161 422 C163 390 188 372 174 340 C160 309 128 297 135 260 C142 222 177 217 167 182 C157 148 138 97 174 76 Z"
-              fill="#393936"
-              opacity="0.92"
-            />
-            <path
-              d="M137 282 C154 276 176 286 177 307 C179 331 154 340 138 327 C121 313 119 290 137 282 Z"
-              fill="#44413d"
-              opacity="0.9"
-            />
-            <path
-              d="M125 331 C146 326 162 343 157 364 C152 386 125 389 113 371 C100 352 105 336 125 331 Z"
-              fill="#3d3a36"
-              opacity="0.9"
-            />
-            <path
-              d="M91 260 C113 252 132 267 131 288 C130 309 107 321 89 309 C70 297 69 268 91 260 Z"
-              fill="#3c3935"
-              opacity="0.9"
-            />
-            <path
-              d="M162 76 C184 46 242 50 272 91"
-              fill="none"
-              opacity="0.35"
-              stroke="#8f877c"
-            />
-            <path
-              d="M155 183 C190 185 223 188 257 207"
-              fill="none"
-              opacity="0.28"
-              stroke="#e8ded0"
-            />
-            <path
-              d="M137 282 C177 284 222 290 294 294"
-              fill="none"
-              opacity="0.28"
-              stroke="#e8ded0"
-            />
-            <path
-              d="M161 422 C189 401 211 386 237 373"
-              fill="none"
-              opacity="0.26"
-              stroke="#e8ded0"
-            />
-            <path
-              d="M91 260 C105 284 107 296 89 309"
-              fill="none"
-              opacity="0.26"
-              stroke="#e8ded0"
-            />
-          </svg>
+        <div className="relative aspect-[972/1619] w-full">
+          <img
+            alt="无标记的极简英国地图"
+            className="absolute inset-0 h-full w-full object-cover"
+            draggable={false}
+            src="/images/uk-map-minimal.png"
+          />
 
           {sections.map((section) => {
             const isActive = activeSlug === section.slug;
@@ -96,7 +44,7 @@ export function RegionalDetailMap({ sections }: RegionalDetailMapProps) {
             return (
               <button
                 aria-label={`${section.name}，${section.year}`}
-                className="group absolute flex h-8 w-8 -translate-x-1/2 -translate-y-1/2 items-center justify-center outline-none"
+                className="group absolute flex h-9 w-9 -translate-x-1/2 -translate-y-1/2 items-center justify-center outline-none"
                 key={section.slug}
                 onBlur={() => setActiveSlug(null)}
                 onClick={(event) => {
@@ -116,14 +64,14 @@ export function RegionalDetailMap({ sections }: RegionalDetailMapProps) {
                 type="button"
               >
                 <motion.span
-                  animate={{ opacity: isActive ? 0.28 : 0.14, scale: isActive ? 1.35 : 1 }}
-                  className="absolute h-6 w-6 rounded-full"
+                  animate={{ opacity: isActive ? 0.34 : 0.16, scale: isActive ? 1.45 : 1 }}
+                  className="absolute h-7 w-7 rounded-full"
                   style={{ backgroundColor: section.accent }}
                   transition={{ duration: 0.2 }}
                 />
                 <motion.span
                   animate={{ scale: isActive ? 1.18 : 1 }}
-                  className="relative h-3 w-3 rounded-full border border-white shadow-[0_5px_18px_rgba(0,0,0,0.32)]"
+                  className="relative h-3.5 w-3.5 rounded-full border border-white shadow-[0_5px_18px_rgba(0,0,0,0.32)]"
                   style={{ backgroundColor: section.accent }}
                   transition={{ duration: 0.2 }}
                 />
@@ -149,7 +97,7 @@ export function RegionalDetailMap({ sections }: RegionalDetailMapProps) {
       </div>
 
       <p className="text-center text-xs leading-6 text-[#a99d8f]">
-        点击英国地图上的点会跳到下方对应地区。
+        英国城市坐标 / London, Manchester, Bristol, Edinburgh
       </p>
     </div>
   );
