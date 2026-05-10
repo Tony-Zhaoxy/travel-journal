@@ -30,9 +30,8 @@ export function CountryStoryCard({ index, travel }: CountryStoryCardProps) {
         </div>
         <div className="flex min-h-[330px] flex-col justify-between p-5 md:p-7">
           <div className="space-y-5">
-            <div className="flex items-center justify-between gap-4 text-sm uppercase text-[#948879]">
+            <div className="text-sm uppercase text-[#948879]">
               <span>{travel.region}</span>
-              <span>{travel.year}</span>
             </div>
             <div>
               <h3 className="text-3xl font-normal text-[#2d2923]">{travel.name}</h3>
