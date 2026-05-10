@@ -8,12 +8,13 @@ type CountryGridProps = {
 
 export function CountryGrid({ travels }: CountryGridProps) {
   return (
-    <section className="bg-[#080807] px-5 py-20 text-[#f6f0e7] sm:px-8" id="stories">
+    <section className="bg-[#fbf7ef] px-5 py-20 text-[#2d2923] sm:px-8" id="stories">
       <div className="mx-auto max-w-6xl">
         <AnimatedSection className="mb-12 grid gap-6 md:grid-cols-[0.7fr_1.3fr]">
-          <p className="text-sm uppercase text-[#a99d8f]">旅行索引</p>
-          <h2 className="max-w-3xl text-3xl font-normal text-balance text-[#fff8ef] md:text-5xl">
-            先把去过的地方收进一张地图里，具体城市、照片和简介下一步慢慢补齐。
+          <p className="text-sm uppercase text-[#948879]">Travel Notes</p>
+          <h2 className="max-w-3xl text-3xl font-normal text-balance md:text-5xl">
+            Each marker opens into a small personal section for routes, memories,
+            and future photo galleries.
           </h2>
         </AnimatedSection>
 

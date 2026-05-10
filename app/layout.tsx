@@ -3,16 +3,16 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: {
-    default: "旅行札记",
-    template: "%s | 旅行札记"
+    default: "Travel Journal",
+    template: "%s | Travel Journal"
   },
-  description: "一个中文的私人旅行摄影地图与生活记录网站。",
+  description: "A personal travel photography journal with an interactive world map.",
   icons: {
     icon: "/favicon.svg"
   },
   openGraph: {
-    title: "旅行札记",
-    description: "用地图、照片和短句整理走过的国家与地区。",
+    title: "Travel Journal",
+    description: "A quiet map of visited places, photo notes, routes, and memories.",
     type: "website"
   }
 };

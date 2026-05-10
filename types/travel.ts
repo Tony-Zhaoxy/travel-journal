@@ -13,6 +13,8 @@ export type TravelEntry = {
   name: string;
   englishName: string;
   region: string;
+  city: string;
+  year: string;
   visitSummary: string;
   visitCount?: number;
   airportOnly?: boolean;

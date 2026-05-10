@@ -32,14 +32,14 @@ export async function generateMetadata({
     title: country.name,
     description: country.memory,
     openGraph: {
-      title: `${country.name} | 旅行札记`,
+      title: `${country.name} | Travel Journal`,
       description: country.memory,
       images: [
         {
           url: country.coverImage,
           width: 1600,
           height: 1000,
-          alt: `${country.name}旅行照片`
+          alt: `${country.name} travel photograph`
         }
       ]
     }
@@ -63,7 +63,7 @@ export default async function CountryPage({ params }: CountryPageProps) {
         <section className="relative min-h-[82vh] overflow-hidden px-5 pb-16 pt-28 sm:px-8">
           <div className="absolute inset-0">
             <img
-              alt={`${country.name}旅行封面`}
+              alt={`${country.name} travel cover`}
               className="h-full w-full object-cover"
               src={country.coverImage}
             />
@@ -71,11 +71,11 @@ export default async function CountryPage({ params }: CountryPageProps) {
           </div>
           <AnimatedSection className="relative z-10 mx-auto flex min-h-[64vh] max-w-6xl flex-col justify-end">
             <Link className="mb-10 w-fit border-b border-white/40 pb-1 text-sm" href="/">
-              回到地图
+              Back to map
             </Link>
             <div className="max-w-4xl space-y-7">
               <p className="text-sm uppercase text-[#e7d8c7]">
-                {country.region} / {country.visitSummary}
+                {country.region} / {country.city} / {country.year}
               </p>
               <h1 className="text-5xl font-normal text-balance text-white md:text-7xl">
                 {country.name}
@@ -91,17 +91,17 @@ export default async function CountryPage({ params }: CountryPageProps) {
         <AnimatedSection className="mx-auto grid max-w-6xl gap-12 px-5 py-20 sm:px-8 lg:grid-cols-[0.72fr_1.28fr]">
           <aside className="space-y-8">
             <div>
-              <p className="mb-3 text-sm uppercase text-[#a99d8f]">路线</p>
+              <p className="mb-3 text-sm uppercase text-[#a99d8f]">Route</p>
               <p className="text-2xl text-[#fff8ef]">{country.route}</p>
             </div>
             <div>
-              <p className="mb-3 text-sm uppercase text-[#a99d8f]">坐标</p>
+              <p className="mb-3 text-sm uppercase text-[#a99d8f]">Coordinates</p>
               <p className="text-lg text-[#d8cec1]">
                 {country.coordinates.lat.toFixed(2)}, {country.coordinates.lng.toFixed(2)}
               </p>
             </div>
             <div>
-              <p className="mb-3 text-sm uppercase text-[#a99d8f]">去过的地区</p>
+              <p className="mb-3 text-sm uppercase text-[#a99d8f]">Cities / Route</p>
               <div className="space-y-2">
                 {country.places.map((place) => (
                   <p className="border-l border-white/20 pl-3 text-sm text-[#d8cec1]" key={place}>
@@ -151,14 +151,14 @@ export default async function CountryPage({ params }: CountryPageProps) {
               className="border border-white/10 p-5 transition hover:border-white/30"
               href={`/countries/${adjacent.previous.slug}`}
             >
-              <p className="text-sm text-[#a99d8f]">上一站</p>
+              <p className="text-sm text-[#a99d8f]">Previous</p>
               <p className="mt-2 text-2xl">{adjacent.previous.name}</p>
             </Link>
             <Link
               className="border border-white/10 p-5 text-left transition hover:border-white/30 sm:text-right"
               href={`/countries/${adjacent.next.slug}`}
             >
-              <p className="text-sm text-[#a99d8f]">下一站</p>
+              <p className="text-sm text-[#a99d8f]">Next</p>
               <p className="mt-2 text-2xl">{adjacent.next.name}</p>
             </Link>
           </div>
