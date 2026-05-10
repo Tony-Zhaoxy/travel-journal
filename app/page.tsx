@@ -12,16 +12,13 @@ export default function Home() {
         <CountryGrid travels={travels} />
         <section className="border-t border-[#e6ded4] bg-[#f5efe6] px-5 py-20 sm:px-8">
           <div className="mx-auto grid max-w-6xl gap-10 md:grid-cols-[0.8fr_1.2fr]">
-            <p className="text-sm uppercase text-[#948879]">How to edit later</p>
+            <p className="text-sm uppercase text-[#948879]">后续编辑</p>
             <div className="space-y-6">
               <h2 className="max-w-3xl text-3xl font-normal text-balance text-[#2d2923] md:text-5xl">
-                Replace the placeholders with your real cities, dates, notes, and
-                photographs whenever you are ready.
+                之后只需要替换数据里的城市、年份、简介和照片，地图与记录卡片会一起更新。
               </h2>
               <p className="max-w-2xl text-base leading-8 text-[#6f665d] md:text-lg">
-                Travel entries live in one simple data file. Updating a country,
-                coordinate, city, year, cover image, or gallery caption updates the
-                map marker and story section together.
+                当前列表已经按你给的最新版整理好，包括英国地区和美国州；具体去过的城市、路线和照片可以下一步逐项补进去。
               </p>
             </div>
           </div>

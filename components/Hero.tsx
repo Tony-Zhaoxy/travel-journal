@@ -22,14 +22,11 @@ export function Hero({ travels }: HeroProps) {
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
         >
           <p className="text-sm uppercase text-[#948879]">
-            Personal travel atlas / {travels.length} places
+            Personal travel atlas / {travels.length} 个国家、地区与州
           </p>
-          <h1 className="text-5xl font-normal text-balance md:text-7xl">
-            Travel Journal
-          </h1>
+          <h1 className="text-5xl font-normal text-balance md:text-7xl">旅行札记</h1>
           <p className="mx-auto max-w-2xl text-base leading-8 text-[#6f665d] md:text-lg">
-            A quiet map of places visited, built as an entrance to personal
-            photography notes, routes, memories, and future galleries.
+            先从一张安静的世界地图进入，把去过的国家、地区、路线和照片慢慢整理成自己的生活记录。
           </p>
         </motion.div>
 

@@ -8,6 +8,11 @@ export type MapOffset = {
   y: number;
 };
 
+export type MapPosition = {
+  x: number;
+  y: number;
+};
+
 export type TravelEntry = {
   slug: string;
   name: string;
@@ -19,6 +24,7 @@ export type TravelEntry = {
   visitCount?: number;
   airportOnly?: boolean;
   coordinates: TravelCoordinates;
+  mapPosition?: MapPosition;
   mapOffset?: MapOffset;
   memory: string;
   coverImage: string;

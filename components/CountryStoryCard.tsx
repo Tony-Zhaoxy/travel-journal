@@ -22,7 +22,7 @@ export function CountryStoryCard({ index, travel }: CountryStoryCardProps) {
       <div className="grid min-h-full sm:grid-cols-[0.9fr_1.1fr]">
         <div className="relative aspect-[4/3] overflow-hidden sm:aspect-auto">
           <img
-            alt={`${travel.name} travel cover`}
+            alt={`${travel.name} 封面照片`}
             className="h-full w-full object-cover transition duration-700 group-hover:scale-105"
             src={travel.coverImage}
           />
@@ -32,11 +32,13 @@ export function CountryStoryCard({ index, travel }: CountryStoryCardProps) {
           <div className="space-y-5">
             <div className="flex items-center justify-between gap-4 text-sm uppercase text-[#948879]">
               <span>{travel.region}</span>
-              <span>{travel.year}</span>
+              <span>{travel.visitSummary}</span>
             </div>
             <div>
               <h3 className="text-3xl font-normal text-[#2d2923]">{travel.name}</h3>
-              <p className="mt-1 text-sm text-[#948879]">{travel.city}</p>
+              <p className="mt-1 text-sm text-[#948879]">
+                {travel.englishName} / {travel.city} / {travel.year}
+              </p>
               <p className="mt-3 text-sm leading-7 text-[#6f665d]">{travel.memory}</p>
             </div>
             <div className="flex flex-wrap gap-2">
@@ -75,7 +77,7 @@ export function CountryStoryCard({ index, travel }: CountryStoryCardProps) {
             href={`/countries/${travel.slug}`}
             style={{ borderColor: travel.accent }}
           >
-            Open story
+            打开记录
           </Link>
         </div>
       </div>

@@ -4,7 +4,7 @@ This is a code-first personal travel photography journal. Keep edits direct, rea
 
 ## Core Workflow
 
-- Use `data/travels.ts` as the source of truth for visited countries, coordinates, cities, copy, and image paths.
+- Use `data/travels.ts` as the source of truth for visited countries, regions, map positions, visit counts, copy, and image paths.
 - Keep reusable UI in `components/`.
 - Keep route data helpers in `lib/`.
 - Use App Router conventions under `app/`.
@@ -12,10 +12,10 @@ This is a code-first personal travel photography journal. Keep edits direct, rea
 
 ## Design Direction
 
-- Minimal, cinematic, photography-forward.
+- Chinese-first, minimal, cinematic, photography-forward.
 - The homepage starts with a clean world map as the main entrance.
 - Keep the style personal and editorial, not commercial or agency-like.
-- Use restrained warm neutrals, charcoal, and soft accent colors.
+- Use restrained warm neutrals, charcoal, and soft accent colors with an East Asian editorial feeling.
 - Avoid heavy map libraries unless the map needs real geographic boundaries later.
 - Keep cards sharp and quiet; use 8px radius or less.
 - Use Framer Motion only inside client components.

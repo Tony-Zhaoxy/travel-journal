@@ -11,10 +11,9 @@ export function CountryGrid({ travels }: CountryGridProps) {
     <section className="bg-[#fbf7ef] px-5 py-20 text-[#2d2923] sm:px-8" id="stories">
       <div className="mx-auto max-w-6xl">
         <AnimatedSection className="mb-12 grid gap-6 md:grid-cols-[0.7fr_1.3fr]">
-          <p className="text-sm uppercase text-[#948879]">Travel Notes</p>
+          <p className="text-sm uppercase text-[#948879]">旅行记录</p>
           <h2 className="max-w-3xl text-3xl font-normal text-balance md:text-5xl">
-            Each marker opens into a small personal section for routes, memories,
-            and future photo galleries.
+            每一个地图标点都会对应下面的一段旅行记录，先留好城市、路线、次数和照片位置。
           </h2>
         </AnimatedSection>
 
