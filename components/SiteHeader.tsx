@@ -8,12 +8,12 @@ export function SiteHeader() {
           旅行札记
         </Link>
         <div className="flex items-center gap-5 text-sm text-[#6f665d]">
-          <a className="transition hover:text-[#2d2923]" href="/#atlas">
+          <Link className="transition hover:text-[#2d2923]" href="/#atlas">
             地图
-          </a>
-          <a className="transition hover:text-[#2d2923]" href="/#stories">
+          </Link>
+          <Link className="transition hover:text-[#2d2923]" href="/#stories">
             记录
-          </a>
+          </Link>
         </div>
       </nav>
     </header>
